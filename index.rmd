@@ -3,7 +3,7 @@ title: "BIOL_3100"
 author: "Dylan Bryant"
 date: "2024-12-02"
 output: 
-  rmdformats::readthedown
+  rmdformats::material
 ---
 
 
