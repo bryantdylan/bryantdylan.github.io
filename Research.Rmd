@@ -1,0 +1,126 @@
+---
+title: "UntiPettled"
+author: "Dylan Bryant"
+date: "2024-12-02"
+output: html_document
+---
+
+```{r message=FALSE, warning=FALSE}
+#Greyscale image calibration graph R code script
+
+library(tidyverse)
+library(ggplot2)
+library(ggpmisc)
+install.packages("ggpmisc")
+# read in data
+ima_cali<-read.csv("/Users/bryan/OneDrive/Documents/EPMA_data_R_practice.csv")
+```
+
+
+```{r}
+str(ima_cali)
+View(ima_cali)
+#facet_wrap by sample, colored by grayscale
+#Ti(ppm)
+ggplot(ima_cali)+
+  geom_point(aes(x=Grayscale,y=Ti_ppm, color=Grayscale), size=2)+
+  geom_smooth(aes(x = Grayscale, y = Ti_ppm),method = "lm", se = FALSE, color='darkorange', size=0.5) +
+  scale_color_gradient(low = "black", high = "purple")+
+  facet_wrap(~SAMPLE, scales="free")+
+  stat_poly_eq(aes(x = Grayscale, y = Ti_ppm, label = ..eq.label..),size=2, 
+               formula = y ~ x, 
+               parse = TRUE) +
+  stat_poly_eq(aes(x = Grayscale, y = Ti_ppm, label = ..rr.label..),size=2, 
+               formula = y ~ x, 
+               parse = TRUE, 
+               label.y = 0.9)+
+  labs(x = "Grayscale", y = "Ti(ppm)", title = "Calibrate Grayscale to PPM : Protolith")+
+  theme_light()
+```
+
+
+```{r}
+#Temperature (*C)
+ggplot(ima_cali)+
+  geom_point(aes(x=Grayscale,y=Temp_C, color=Grayscale), size=2)+
+  geom_smooth(aes(x = Grayscale, y = Temp_C),method = "lm", se = FALSE, color='aquamarine4', size=0.5) +
+  scale_color_gradient(low = "black", high = "purple")+
+  facet_wrap(~SAMPLE, scales="free")+
+  stat_poly_eq(aes(x = Grayscale, y = Temp_C, label = ..eq.label..),size=2, 
+               formula = y ~ x, 
+               parse = TRUE) +
+  stat_poly_eq(aes(x = Grayscale, y = Temp_C, label = ..rr.label..),size=2, 
+               formula = y ~ x, 
+               parse = TRUE, 
+               label.y = 0.9)+
+  labs(x = "Grayscale", y = "Temp(C)", title = "Calibrate Grayscale to Temperature : Protolith")+
+  theme_light()
+```
+
+
+```{r}
+# Not wrapped (Ti ppm)
+ggplot(ima_cali)+
+  geom_point(aes(x=Grayscale,y=Ti_ppm, color=SAMPLE, group=SAMPLE), size=2)+
+  geom_smooth(aes(x = Grayscale, y = Ti_ppm, group=SAMPLE, color=SAMPLE),method = "lm", se = FALSE, size=1) +
+  scale_x_continuous(limits = c(0, 250))+
+  stat_poly_eq(aes(x = Grayscale, y = Ti_ppm, group=SAMPLE, color=SAMPLE, label = ..eq.label..), 
+               formula = y ~ x,
+               size=1.5,
+               parse = TRUE) +
+  stat_poly_eq(aes(x = Grayscale, y = Ti_ppm, label = paste("R^2 = ", ..rr.label..)), 
+               formula = y ~ x, 
+               parse = TRUE,
+               label.y = function(x) x + 0.1,
+               size=2,
+               color = "black") +
+  labs(x = "Grayscale", y = "Ti(ppm)", title = "Calibrate Grayscale to PPM : Protolith")+
+  theme_light()
+```
+
+
+```{r}
+#### Not facet wrapped
+ggplot(ima_cali)+
+  geom_point(aes(x=Grayscale,y=Temp_C, color=SAMPLE, group=SAMPLE), size=2)+
+  geom_smooth(aes(x = Grayscale, y = Temp_C, group=SAMPLE, color=SAMPLE),method = "lm", se = FALSE, size=1) +
+  scale_x_continuous(limits = c(0, 250))+
+  stat_poly_eq(aes(x = Grayscale, y = Temp_C, group=SAMPLE, color=SAMPLE, label = ..eq.label..), 
+               formula = y ~ x,
+               size=1.5,
+               parse = TRUE) +
+  stat_poly_eq(aes(x = Grayscale, y = Temp_C, label = paste("R^2 = ", ..rr.label..)), 
+               formula = y ~ x, 
+               parse = TRUE,
+               label.y = function(x) x + 0.1,
+               size=2,
+               color = "black") +
+  labs(x = "Grayscale", y = "Temp(C)", title = "Calibrate Grayscale to Temperature : Protolith")+
+  theme_light()
+
+library(dplyr)
+```
+
+
+
+```{r}
+#facet_wrap_copy exponential instead of linear
+ggplot(ima_cali)+
+  geom_point(aes(x=Grayscale,y=Ti_ppm, color=Grayscale), size=2)+
+  geom_smooth(aes(x = Grayscale, y = Ti_ppm),method = "glm", formula = y ~ exp(x), se = FALSE, color='darkorange', size=0.5) +
+  scale_color_gradient(low = "black", high = "purple")+
+  facet_wrap(~SAMPLE, scales="free")+
+  stat_poly_eq(aes(x = Grayscale, y = Ti_ppm, label = ..eq.label..),size=2, 
+               formula = y ~ x, 
+               parse = TRUE) +
+  stat_poly_eq(aes(x = Grayscale, y = Ti_ppm, label = ..rr.label..),size=2, 
+               formula = y ~ x, 
+               parse = TRUE, 
+               label.y = 0.9)+
+  labs(x = "Grayscale", y = "Ti(ppm)", title = "Calibrate Grayscale to PPM : Protolith")+
+  theme_light()
+
+
+
+```
+

@@ -5,6 +5,9 @@ date: "2024-12-02"
 output: html_document
 ---
 
+
+[Research](https://bryantdylan.github.io/Research.Rmd)
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
