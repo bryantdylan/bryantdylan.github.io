@@ -1,16 +1,17 @@
 ---
-title: "DS Final"
+title: "BIOL_3100"
 author: "Dylan Bryant"
 date: "2024-12-02"
-output: html_document
+output: 
+  rmdformats::readthedown
 ---
 
 
-[Research](https://bryantdylan.github.io/Research/)
 
-```{r setup, include=FALSE}
-"./Research.Rmd"
-```
+# [Home](https://bryantdylan.github.io/)
+# [Research](https://bryantdylan.github.io/Research/)
+# [About Me](https://bryantdylan.github.io/AboutMe/)
+
 
 ## R Markdown
 
