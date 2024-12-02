@@ -359,44 +359,11 @@ display: none;
 
 <pre class="r"><code>#Greyscale image calibration graph R code script
 
-library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;forcats&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<pre class="r"><code>library(ggplot2)
-library(ggpmisc)</code></pre>
-<pre><code>## Warning: package &#39;ggpmisc&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Loading required package: ggpp</code></pre>
-<pre><code>## Warning: package &#39;ggpp&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Registered S3 methods overwritten by &#39;ggpp&#39;:
-##   method                  from   
-##   heightDetails.titleGrob ggplot2
-##   widthDetails.titleGrob  ggplot2
-## 
-## Attaching package: &#39;ggpp&#39;
-## 
-## The following object is masked from &#39;package:ggplot2&#39;:
-## 
-##     annotate</code></pre>
-<pre><code>## Warning in .recacheSubclasses(def@className, def, env): undefined subclass
-## &quot;ndiMatrix&quot; of class &quot;replValueSp&quot;; definition not updated</code></pre>
-<pre class="r"><code>install.packages(&quot;ggpmisc&quot;)</code></pre>
-<pre><code>## Warning: package &#39;ggpmisc&#39; is in use and will not be installed</code></pre>
-<pre class="r"><code># read in data
+library(tidyverse)
+library(ggplot2)
+library(ggpmisc)
+install.packages(&quot;ggpmisc&quot;)
+# read in data
 ima_cali&lt;-read.csv(&quot;/Users/bryan/OneDrive/Documents/EPMA_data_R_practice.csv&quot;)</code></pre>
 <pre class="r"><code>str(ima_cali)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    50 obs. of  5 variables:
