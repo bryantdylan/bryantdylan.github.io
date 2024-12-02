@@ -6,7 +6,7 @@ output: html_document
 ---
 
 
-[Research](https://bryantdylan.github.io/Research.rmd)
+[Research](https://bryantdylan.github.io/Research/)
 
 ```{r setup, include=FALSE}
 "./Research.Rmd"
