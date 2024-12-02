@@ -6,10 +6,10 @@ output: html_document
 ---
 
 
-[Research](https://bryantdylan.github.io/Research.Rmd)
+[Research](https://bryantdylan.github.io/Research.rmd)
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+"./Research.Rmd"
 ```
 
 ## R Markdown
